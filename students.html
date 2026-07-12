@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Học viên | Ms. Thuy English</title>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">Ms. Thuy English</div>
+            <div class="flex items-center space-x-6 font-medium">
+                <a href="index.html" class="hover:text-blue-600">Trang chủ</a>
+                <a href="courses.html" class="hover:text-blue-600">Khóa học</a>
+                <a href="students.html" class="text-blue-600 font-bold border-b-2 border-blue-600">Học viên</a>
+                <a href="login.html" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Đăng nhập</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Nội dung Học viên -->
+    <main class="max-w-7xl mx-auto py-16 px-6">
+        <h2 class="text-4xl font-bold text-center mb-16">Học viên tiêu biểu</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Feedback 1 -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                <p class="text-gray-700 italic mb-6">"Phương pháp của cô Thuy rất thực tế, mình đã cải thiện kỹ năng nghe đáng kể và tự tin giao tiếp chỉ sau một khóa học."</p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600 mr-4">AN</div>
+                    <div>
+                        <div class="font-bold">Ngô Thu Thảo</div>
+                        <div class="text-sm text-gray-500">Khóa Giao tiếp</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback 2 -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                <p class="text-gray-700 italic mb-6">"Lộ trình luyện thi TOEIC được thiết kế rất khoa học. Nhờ cô, mình đã đạt mục tiêu 750 điểm đúng thời hạn."</p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600 mr-4">BÌNH</div>
+                    <div>
+                        <div class="font-bold">Trương Công Tài</div>
+                        <div class="text-sm text-gray-500">Khóa TOEIC</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-gray-500 border-t mt-20">
+        <p>&copy; 2019 Ms. Thuy English. Tất cả các quyền được bảo lưu.</p>
+    </footer>
+
+    <!-- Script bảo mật -->
+    <script>
+        if (!sessionStorage.getItem('daVaoTrangChu')) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

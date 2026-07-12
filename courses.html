@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Khóa học | Ms. Thuy English</title>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navbar (Đồng bộ với Trang chủ) -->
+    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">Ms. Thuy English</div>
+            <div class="flex items-center space-x-6 font-medium">
+                <a href="index.html" class="hover:text-blue-600">Trang chủ</a>
+                <a href="courses.html" class="text-blue-600 font-bold border-b-2 border-blue-600">Khóa học</a>
+                <a href="students.html" class="hover:text-blue-600">Học viên</a>
+                <a href="register.html" class="text-blue-600 hover:text-blue-800 font-semibold">Đăng ký khóa học</a>
+                <a href="login.html" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Đăng nhập</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Nội dung Khóa học -->
+    <main class="max-w-7xl mx-auto py-16 px-6">
+        <h2 class="text-4xl font-bold text-center mb-12">Các khóa học hiện có</h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Thẻ khóa học 1 -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition">
+                <div class="text-4xl mb-4">🗣️</div>
+                <h3 class="text-2xl font-bold mb-2">Tiếng Anh Giao Tiếp</h3>
+                <p class="text-gray-600 mb-4">Xây dựng phản xạ tự nhiên, tự tin nói tiếng Anh sau 3 tháng.</p>
+                <a href="register.html" class="text-blue-600 font-semibold underline">Đăng ký ngay</a>
+            </div>
+
+            <!-- Thẻ khóa học 2 -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition">
+                <div class="text-4xl mb-4">📝</div>
+                <h3 class="text-2xl font-bold mb-2">Luyện thi TOEIC</h3>
+                <p class="text-gray-600 mb-4">Chiến thuật làm bài, tối ưu kỹ năng Nghe - Đọc, mục tiêu 700+.</p>
+                <a href="register.html" class="text-blue-600 font-semibold underline">Đăng ký ngay</a>
+            </div>
+
+            <!-- Thẻ khóa học 3 -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition">
+                <div class="text-4xl mb-4">👶</div>
+                <h3 class="text-2xl font-bold mb-2">Tiếng Anh Trẻ Em</h3>
+                <p class="text-gray-600 mb-4">Tạo nền tảng vững chắc, yêu thích ngôn ngữ từ nhỏ.</p>
+                <a href="register.html" class="text-blue-600 font-semibold underline">Đăng ký ngay</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-gray-500 border-t mt-20">
+        <p>&copy; 2026 Ms. Thuy English. Tất cả các quyền được bảo lưu.</p>
+    </footer>
+
+    <!-- Script kiểm tra bảo mật (Bắt buộc phải qua trang chủ) -->
+    <script>
+        if (!sessionStorage.getItem('daVaoTrangChu')) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

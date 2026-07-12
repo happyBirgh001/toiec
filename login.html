@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Đăng nhập | Ms. Thuy English</title>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-96 text-center">
+        <h2 class="text-2xl font-bold mb-6">Đăng nhập hệ thống</h2>
+        <form class="space-y-4">
+            <input type="text" placeholder="Tên đăng nhập" class="w-full p-3 border rounded-lg">
+            <input type="password" placeholder="Mật khẩu" class="w-full p-3 border rounded-lg">
+            <button type="button" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold">Gửi</button>
+        </form>
+    </div>
+
+    <script>
+        // Kiểm tra xem đã qua trang chủ chưa?
+        if (!sessionStorage.getItem('daVaoTrangChu')) {
+            alert("Vui lòng truy cập từ trang chủ!");
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

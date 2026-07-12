@@ -1,0 +1,39 @@
+/* css.css */
+body {
+    font-family: 'Inter', sans-serif;
+}
+.btn-primary {
+    background-color: #2d7dd2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.btn-primary:hover {
+    background-color: #1a5a9e;
+}
+
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { min-height: 100vh; display: flex; flex-direction: column; background: #f5f7fb; }
+
+    /* Header linh hoạt */
+    header { background: #2563eb; padding: 15px; color: #fff; text-align: center; }
+    header h1 { font-size: 20px; margin-bottom: 10px; }
+    
+    /* Menu ngang cho điện thoại (tự cuộn nếu nhiều) */
+    nav { display: flex; gap: 10px; justify-content: center; overflow-x: auto; padding-bottom: 5px; }
+    nav a { color: #fff; text-decoration: none; font-size: 13px; white-space: nowrap; padding: 5px; }
+    nav a.active { border-bottom: 2px solid #fff; }
+
+    /* Container thích nghi */
+    .container { width: 95%; max-width: 600px; margin: 20px auto; flex: 1; }
+
+    /* Các thành phần khác giữ nguyên class cũ nhưng sẽ tự co giãn theo container */
+    .card, .lesson, .teacher-card, .branch-card { width: 100%; margin-bottom: 15px; }
+    
+    /* Nút đăng xuất */
+    .logout-btn { width: 100%; max-width: 200px; display: block; margin: 20px auto; padding: 10px; border-radius: 50px; cursor: pointer; }
+
+    /* Footer */
+    footer { padding: 15px; text-align: center; font-size: 12px; background: #0f172a; color: #fff; }

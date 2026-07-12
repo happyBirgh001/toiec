@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - English Ms.Thuy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        /* RESET & FONT */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { min-height: 100vh; display: flex; flex-direction: column; background: #f5f7fb; color: #333; }
+
+        /* HEADER */
+        header { background: #2563eb; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; color: #fff; }
+        header h1 { font-size: 24px; }
+        nav { display: flex; gap: 20px; }
+        nav a { color: #fff; text-decoration: none; font-weight: 500; font-size: 15px; padding-bottom: 4px; border-bottom: 2px solid transparent; transition: 0.3s; }
+        nav a:hover, nav a.active { border-bottom: 2px solid #fff; }
+
+        /* MAIN CONTENT */
+        .container { flex: 1; width: 90%; max-width: 800px; margin: 30px auto; }
+        .container h2 { margin-bottom: 20px; color: #2563eb; }
+
+        /* SCHEDULE LIST */
+        .schedule { display: flex; flex-direction: column; gap: 15px; }
+        .lesson { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .lesson-header { background: #2563eb; color: #fff; padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .lesson-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 15px; }
+        .lesson-content p { padding: 10px 0; border-bottom: 1px solid #eee; }
+
+        /* BUTTONS & FOOTER */
+        .logout-btn { display: block; margin: 30px auto; padding: 10px 25px; background: #fff; color: #2563eb; border: 2px solid #2563eb; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+        .logout-btn:hover { background: #2563eb; color: #fff; }
+        footer { text-align: center; padding: 20px; background: #0f172a; color: #fff; font-size: 14px; }
+
+        .arrow { transition: transform 0.3s; }
+        .rotate { transform: rotate(180deg); }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>English Ms.Thuy</h1>
+    <nav>
+        <a href="profile.html">Student Profile</a>
+        <a href="Schedule.html" class="active">Schedule</a>
+        <a href="Teacher.html">Teachers</a>
+        <a href="BranchAddress.html">Branch Address</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>📚 Weekly Class Schedule</h2>
+    <div class="schedule">
+        <!-- Lesson 1 (Thứ 2) -->
+        <div class="lesson">
+            <div class="lesson-header" onclick="toggleLesson(this)">
+                <span>Monday - TOEIC Listening Part 3</span>
+                <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <div class="lesson-content">
+                <p><strong>Time:</strong> 19:00 - 21:30 | <strong>Room:</strong> A101</p>
+                <p><strong>Content:</strong> Strategy for long conversations.</p>
+            </div>
+        </div>
+
+        <!-- Lesson 2 (Thứ 4) -->
+        <div class="lesson">
+            <div class="lesson-header" onclick="toggleLesson(this)">
+                <span>Wednesday - TOEIC Reading</span>
+                <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <div class="lesson-content">
+                <p><strong>Time:</strong> 19:00 - 21:30 | <strong>Room:</strong> A102</p>
+                <p><strong>Content:</strong> Grammar & Part 5 practice.</p>
+            </div>
+        </div>
+
+        <!-- Lesson 3 (Thứ 6 - MỚI THÊM) -->
+        <div class="lesson">
+            <div class="lesson-header" onclick="toggleLesson(this)">
+                <span>Friday - TOEIC Full Practice & Review</span>
+                <i class="fas fa-chevron-down arrow"></i>
+            </div>
+            <div class="lesson-content">
+                <p><strong>Time:</strong> 19:00 - 21:30 | <strong>Room:</strong> A103</p>
+                <p><strong>Content:</strong> Mock Test & Review.</p>
+            </div>
+        </div>
+    </div>
+    
+    
+   
+</div>
+
+<footer>© 2019 English Ms.Thuy</footer>
+
+<script>
+    function toggleLesson(element){
+        const content = element.nextElementSibling;
+        const arrow = element.querySelector(".arrow");
+        if(content.style.maxHeight){
+            content.style.maxHeight = null;
+            arrow.classList.remove("rotate");
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            arrow.classList.add("rotate");
+        }
+    }
+    function logout(){
+        localStorage.removeItem("login");
+        window.location.href = "login.html";
+    }
+</script>
+</body>
+</html>

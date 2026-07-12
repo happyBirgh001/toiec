@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - English Ms.Thuy</title>
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- Kiểm tra bảo mật ngay khi tải trang -->
+    <script>
+        if(localStorage.getItem("login") !== "true"){
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<style>
+    /* Reset cơ bản */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #2563eb;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a.active {
+    border-bottom: 2px solid white;
+}
+
+/* Container chính */
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+/* Card hồ sơ */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #2563eb;
+}
+
+.eye-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #2563eb;
+}
+
+/* Nút đăng xuất */
+.logout-btn {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #b91c1c;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+</style>
+<body>
+
+<header>
+    <h1>English Ms.Thuy</h1>
+    <nav>
+        <a href="profile.html" class="active">Student Profile</a>
+        <a href="Schedule.html">Schedule</a>
+        <a href="Teacher.html">Teachers</a>
+        <a href="BranchAddress.html">Branch Address</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="card">
+        <img src="Screenshot 2026-06-28 224453.png.jpg" class="avatar" alt="Avatar">
+        <h2>Nguyen Thi Nhu Y</h2>
+        <p>Mã học viên: NTNY310</p>
+        <p>Email: N*******10@gmail.com</p>
+        <p>
+            SĐT:
+            <span id="phone">07******10</span>
+            <button onclick="togglePhone()" class="eye-btn">
+                <i id="eyeIcon" class="fa-solid fa-eye"></i>
+            </button>
+        </p>
+        <p>Trình độ: Intermediate</p>
+    </div>
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <button onclick="logout()" class="logout-btn" style="padding: 10px 20px; cursor: pointer;">Đăng xuất</button>
+</div>
+
+<script>
+    function logout(){
+        localStorage.removeItem("login");
+        window.location.href = "login.html";
+    }
+
+    let showPhone = false;
+    function togglePhone(){
+        const phone = document.getElementById("phone");
+        const eye = document.getElementById("eyeIcon");
+        if(showPhone){
+            phone.textContent = "07******10";
+            eye.className = "fa-solid fa-eye";
+        } else {
+            phone.textContent = "0708042310";
+            eye.className = "fa-solid fa-eye-slash";
+        }
+        showPhone = !showPhone;
+    }
+</script>
+</body>
+</html>
