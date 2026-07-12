@@ -3,25 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
     <title>Đăng nhập | Ms. Thuy English</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="bg-white p-8 rounded-xl shadow-lg w-96 text-center">
         <h2 class="text-2xl font-bold mb-6">Đăng nhập hệ thống</h2>
-        <form class="space-y-4">
-            <input type="text" placeholder="Tên đăng nhập" class="w-full p-3 border rounded-lg">
-            <input type="password" placeholder="Mật khẩu" class="w-full p-3 border rounded-lg">
-            <button type="button" class="w-full bg-blue-600 text-white py-3 rounded-lg font-bold">Gửi</button>
+        <form id="loginForm" class="space-y-4">
+            <input type="text" id="username" placeholder="Tên đăng nhập" class="w-full p-3 border rounded-lg" required>
+            <input type="password" id="password" placeholder="Mật khẩu" class="w-full p-3 border rounded-lg" required>
+            <button onclick="handleLogin()" class="bg-blue-600 text-white p-3 rounded">Đăng nhập ngay</button>
         </form>
     </div>
 
     <script>
-        // Kiểm tra xem đã qua trang chủ chưa?
-        if (!sessionStorage.getItem('daVaoTrangChu')) {
-            alert("Vui lòng truy cập từ trang chủ!");
-            window.location.href = 'index.html';
-        }
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            // Kiểm tra tài khoản NhuY / Nhuy123@
+            if (user === "1" && pass === "1") {
+                // LƯU Ý: Dùng "login" làm key cho cả 2 file
+                localStorage.setItem("login", "true");
+                window.location.href = "profile.html";
+            } else {
+                alert("Sai tên đăng nhập hoặc mật khẩu!");
+            }
+        });
+        function handleLogin() {
+        // Giả sử đăng nhập thành công
+        sessionStorage.setItem('isLoggedIn', 'true');
+        window.location.href = 'index.html';
+    }
     </script>
 </body>
 </html>

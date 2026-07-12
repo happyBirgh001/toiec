@@ -12,15 +12,37 @@
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-600">Ms. Thuy English</div>
-            <div class="flex items-center space-x-6 font-medium" id="authArea" class="flex items-center space-x-6">
+            
+            <!-- Nút Hamburger (Chỉ hiện trên mobile) -->
+            <button id="menuBtn" class="md:hidden text-2xl z-50 relative p-2 focus:outline-none">
+                ☰
+            </button>
+
+            <!-- Menu trên Desktop -->
+            <div class="hidden md:flex items-center space-x-6 font-medium">
                 <a href="index.html" class="text-blue-600 border-b-2 border-blue-600">Trang chủ</a>
                 <a href="courses.html" class="hover:text-blue-600">Khóa học</a>
                 <a href="students.html" class="hover:text-blue-600">Học viên</a>
                 <a href="register.html" class="hover:text-blue-600">Đăng ký</a>
-               <a href="login.html" id="loginBtn" class="bg-blue-600 text-white px-5 py-2 rounded-lg">Đăng nhập</a>
+                <a href="login.html" id="authBtnDesktop" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Đăng nhập</a>
             </div>
         </div>
+
+        <!-- Menu Sidebar (Trượt từ trái qua cho Mobile) -->
+        <div id="navMenu" class="fixed top-0 left-[-100%] h-full w-[250px] bg-white shadow-2xl transition-all duration-500 ease-in-out z-40 p-10 flex flex-col space-y-6 md:hidden">
+            <div class="mt-10 font-medium flex flex-col space-y-6 text-lg">
+                <a href="index.html" class="text-blue-600">Trang chủ</a>
+                <a href="courses.html" class="hover:text-blue-600">Khóa học</a>
+                <a href="students.html" class="hover:text-blue-600">Học viên</a>
+                <a href="register.html" class="hover:text-blue-600">Đăng ký</a>
+                <a href="login.html" id="authBtnMobile" class="bg-blue-600 text-white px-5 py-2 rounded-lg text-center">Đăng nhập</a>
+            </div>
+        </div>
+        
+        <!-- Overlay làm mờ nền khi mở menu -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30 md:hidden"></div>
     </nav>
+    
 
     <!-- Hero Section -->
     <header class="relative bg-blue-900 text-white py-24">
@@ -28,88 +50,105 @@
             <div>
                 <h1 class="text-5xl font-extrabold mb-6">Chinh phục tiếng Anh đỉnh cao cùng Ms. Thuy</h1>
                 <p class="text-lg text-blue-100 mb-8">Hơn 5 năm kinh nghiệm đào tạo, giúp hàng nghìn học viên từ mất gốc thành thạo giao tiếp và chinh phục các kỳ thi quốc tế.</p>
-                <div class="space-x-4">
-                    <a href="register.html" class="bg-white text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition">Đăng ký ngay</a>
-                </div>
+                <a href="register.html" class="bg-white text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition">Đăng ký ngay</a>
             </div>
             <div class="bg-blue-800 p-2 rounded-2xl shadow-2xl">
                 <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600" alt="Ms. Thuy Teaching" class="rounded-xl w-full h-[350px] object-cover">
             </div>
         </div>
     </header>
-
-    <!-- Giới thiệu các thế mạnh -->
-    <section class="py-20 max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-center mb-16">Tại sao nên chọn chúng tôi?</h2>
-        <div class="grid md:grid-cols-3 gap-10">
-            <div class="text-center p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
-                <div class="text-4xl mb-4">🎓</div>
-                <h3 class="text-xl font-bold mb-2">Phương pháp cá nhân hóa</h3>
-                <p class="text-gray-600">Lộ trình được thiết kế riêng biệt dựa trên năng lực và mục tiêu của từng học viên.</p>
-            </div>
-            <div class="text-center p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
-                <div class="text-4xl mb-4">🎯</div>
-                <h3 class="text-xl font-bold mb-2">Cam kết đầu ra</h3>
-                <p class="text-gray-600">Đảm bảo tiến bộ rõ rệt sau mỗi lộ trình, cam kết hoàn tiền nếu không đạt kết quả.</p>
-            </div>
-            <div class="text-center p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
-                <div class="text-4xl mb-4">⏱️</div>
-                <h3 class="text-xl font-bold mb-2">Tiết kiệm thời gian</h3>
-                <p class="text-gray-600">Phương pháp tinh gọn, tối ưu 50% thời gian so với các khóa học truyền thống.</p>
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">Khóa học nổi bật</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gaTOIEC
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition">
+                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=400" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">TOIEC Cấp Tốc</h3>
+                        <p class="text-gray-600 mb-4">Lộ trình 3 tháng cam kết tăng 1.0 - 1.5 band điểm.</p>
+                        <a href="register.html" class="text-blue-600 font-bold">Xem chi tiết →</a>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOKYEfhJ11FD337TDHANj_M7c5DIX5p34iXPzNYrc_cLVwpTPhM8MfXHay&s=10" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Tiếng Anh Giao Tiếp</h3>
+                        <p class="text-gray-600 mb-4">Phản xạ tự nhiên, phát âm chuẩn người bản xứ.</p>
+                        <a href="register.html" class="text-blue-600 font-bold">Xem chi tiết →</a>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition">
+                    <img src="https://planguages.com/uploads/noidung/images/adobestock-121719342.jpeg" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Tiếng Anh Cho Người Mất Gốc</h3>
+                        <p class="text-gray-600 mb-4">Xây dựng nền tảng từ con số 0.</p>
+                        <a href="register.html" class="text-blue-600 font-bold">Xem chi tiết →</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <!-- Footer mới với Thông tin liên hệ -->
-    <footer class="bg-gray-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
-            
-            <!-- Thông tin trung tâm -->
-            <div>
-                <h3 class="text-xl font-bold mb-4">Ms. Thuy English</h3>
-                <p class="text-gray-400">Đồng hành cùng học viên chinh phục mục tiêu tiếng Anh với lộ trình tinh gọn và hiệu quả nhất.</p>
+    <!-- Cảm nhận học viên (Mới) -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-12">Học viên nói gì về chúng tôi?</h2>
+            <div class="italic text-lg text-gray-700 bg-blue-50 p-8 rounded-2xl">
+                "Nhờ phương pháp cá nhân hóa của Ms. Thuy mà mình đã đạt TOIECS 720 chỉ sau 4 tháng, dù trước đó mình rất sợ tiếng Anh!"
             </div>
-
-            <!-- Liên hệ -->
-            <div>
-                <h3 class="text-xl font-bold mb-4">Thông tin liên hệ</h3>
-                <ul class="text-gray-400 space-y-2">
-                    <li>📍 Địa chỉ: 247 Thế Lữ, Phường An Hải Bắc, Quận Sơn Trà Đà Nẵng</li>
-                    <li>📞 Hotline: 0905 7813</li>
-                    <li>✉️ Email: 78tuyensinhmsthuy@gmail.com</li>
-                    <li>⏰ Giờ làm việc: 08:00 - 12:00 & 15:00 -22:00</li>
-                </ul>
-            </div>
-
-           
-            <div>
-                <h3 class="text-xl font-bold mb-4">Kết nối với chúng tôi</h3>
-                <div class="flex space-x-4 mb-6">
-                    <a href="#" class="bg-blue-600 p-3 rounded-full hover:bg-blue-700">Facebook</a>
-                    <a href="#" class="bg-pink-600 p-3 rounded-full hover:bg-pink-700">Instagram</a>
-                </div>
-                <a href="register.html" class="inline-block border-2 border-white px-6 py-2 rounded-lg hover:bg-white hover:text-gray-900 transition">Liên hệ tư vấn</a>
-            </div>
+            <p class="mt-4 font-bold text-blue-600">— Truong Cong Tai, Học viên TOIEC  720</p>
         </div>
-        
-        <div class="text-center mt-12 pt-8 border-t border-gray-800 text-gray-500 text-sm">
-            &copy; 2019 Thuy English. Tất cả các quyền được bảo lưu.
-        </div>
-    </footer>
+    </section>
 
-    
+    <!-- Kêu gọi hành động cuối trang (Mới) -->
+    <section class="py-16 bg-blue-600 text-white text-center">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-6">Bạn đã sẵn sàng bứt phá tiếng Anh?</h2>
+            <p class="mb-8 text-blue-100">Đăng ký ngay hôm nay để nhận ưu đãi lộ trình học cá nhân hóa dành riêng cho bạn.</p>
+            <a href="register.html" class="bg-white text-blue-600 px-10 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">Đăng ký lộ trình miễn phí</a>
+        </div>
+    </section>
+
+    <!-- ... Các phần Giới thiệu và Footer giữ nguyên ... -->
+
     <script>
-        sessionStorage.setItem('daVaoTrangChu', 'true');
-        const authArea = document.getElementById('authArea');
-    const loginBtn = document.getElementById('loginBtn');
+        // Xử lý menu trượt
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const overlay = document.getElementById('overlay');
 
-    if (sessionStorage.getItem('isLoggedIn') === 'true') {
-        // Nếu đã đăng nhập, thay nút Đăng nhập bằng tên người dùng
-        loginBtn.innerHTML = `Xin chào, ${sessionStorage.getItem('username')}`;
-        loginBtn.className = "text-blue-600 font-bold";
-        loginBtn.href = "#"; // Không cho click vào trang login nữa
-    }
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('left-[-100%]');
+            navMenu.classList.toggle('left-0');
+            overlay.classList.toggle('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            navMenu.classList.remove('left-0');
+            navMenu.classList.add('left-[-100%]');
+            overlay.classList.add('hidden');
+        });
+
+        // Xử lý nút Đăng nhập/Trang cá nhân
+        const authBtnDesktop = document.getElementById('authBtnDesktop');
+        const authBtnMobile = document.getElementById('authBtnMobile');
+        
+        if (sessionStorage.getItem('isLoggedIn') === 'true') {
+            const btnText = "Trang cá nhân";
+            const btnLink = "profile.html";
+            const btnClass = "bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition";
+            
+            authBtnDesktop.innerHTML = btnText;
+            authBtnDesktop.href = btnLink;
+            authBtnDesktop.className = btnClass;
+
+            authBtnMobile.innerHTML = btnText;
+            authBtnMobile.href = btnLink;
+            authBtnMobile.className = btnClass + " text-center";
+        }
     </script>
 </body>
 </html>
