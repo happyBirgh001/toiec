@@ -9,33 +9,39 @@
 <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="bg-white p-8 rounded-xl shadow-lg w-96 text-center">
         <h2 class="text-2xl font-bold mb-6">Đăng nhập hệ thống</h2>
+        <!-- Chỉ dùng 1 form duy nhất -->
         <form id="loginForm" class="space-y-4">
             <input type="text" id="username" placeholder="Tên đăng nhập" class="w-full p-3 border rounded-lg" required>
             <input type="password" id="password" placeholder="Mật khẩu" class="w-full p-3 border rounded-lg" required>
-            <button onclick="handleLogin()" class="bg-blue-600 text-white p-3 rounded">Đăng nhập ngay</button>
+            <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700 transition">Đăng nhập</button>
         </form>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault(); 
+        
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+        const btn = this.querySelector('button');
 
-            // Kiểm tra tài khoản NhuY / Nhuy123@
-            if (user === "1" && pass === "1") {
-                // LƯU Ý: Dùng "login" làm key cho cả 2 file
-                localStorage.setItem("login", "true");
-                window.location.href = "profile.html";
-            } else {
-                alert("Sai tên đăng nhập hoặc mật khẩu!");
-            }
-        });
-        function handleLogin() {
-        // Giả sử đăng nhập thành công
-        sessionStorage.setItem('isLoggedIn', 'true');
-        window.location.href = 'index.html';
-    }
-    </script>
+        // Kiểm tra tài khoản
+        if (user === "1" && pass === "1") {
+            // Giả vờ đang xử lý: đổi nội dung nút và vô hiệu hóa nút
+            btn.innerText = "Đang xác thực...";
+            btn.disabled = true;
+            btn.classList.add('bg-gray-400');
+
+            // Đợi 2.5 giây rồi mới chuyển trang
+            setTimeout(function() {
+                sessionStorage.setItem("isLoggedIn", "true");
+                window.location.href = "index.html";
+            }, 2500); 
+
+        } else {
+            alert("Sai tên đăng nhập hoặc mật khẩu!");
+        }
+    });
+</script>
 </body>
 </html>
