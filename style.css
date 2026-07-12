@@ -37,3 +37,30 @@ body {
 
     /* Footer */
     footer { padding: 15px; text-align: center; font-size: 12px; background: #0f172a; color: #fff; }
+/* 1. Mặc định trên Máy tính (Desktop) */
+.menu-desktop {
+    display: flex; /* Hiện menu đầy đủ */
+}
+
+.hamburger-icon {
+    display: none; /* Ẩn dấu 3 gạch */
+}
+
+/* 2. Chỉ áp dụng khi màn hình nhỏ hơn 768px (Điện thoại) */
+@media (max-width: 768px) {
+    .menu-desktop {
+        display: none; /* Ẩn menu đầy đủ đi */
+    }
+
+    .hamburger-icon {
+        display: block; /* Hiện dấu 3 gạch lên */
+    }
+}
+@media (max-width: 768px) {
+    .menu-mobile-list.active {
+        display: block !important; /* Khi bấm thì menu bung ra */
+        position: absolute;
+        top: 60px;
+        width: 100%;
+    }
+}

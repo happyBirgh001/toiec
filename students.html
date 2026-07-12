@@ -12,13 +12,31 @@
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-600">Ms. Thuy English</div>
-            <div class="flex items-center space-x-6 font-medium">
+            
+            <!-- Nút Hamburger (Mobile) -->
+            <button id="menuBtn" class="md:hidden text-2xl z-50 relative p-2">☰</button>
+
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex items-center space-x-6 font-medium">
                 <a href="index.html" class="hover:text-blue-600">Trang chủ</a>
                 <a href="courses.html" class="hover:text-blue-600">Khóa học</a>
                 <a href="students.html" class="text-blue-600 font-bold border-b-2 border-blue-600">Học viên</a>
-                <a href="login.html" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Đăng nhập</a>
+                <a href="register.html" class="hover:text-blue-600">Đăng ký</a>
+                <a href="login.html" id="authBtnDesktop" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Đăng nhập</a>
             </div>
         </div>
+
+        <!-- Menu Sidebar (Trượt từ trái) -->
+        <div id="navMenu" class="fixed top-0 left-[-100%] h-full w-[250px] bg-white shadow-2xl transition-all duration-500 ease-in-out z-40 p-10 flex flex-col space-y-6 md:hidden">
+            <div class="mt-10 flex flex-col space-y-6 text-lg font-medium">
+                <a href="index.html">Trang chủ</a>
+                <a href="courses.html">Khóa học</a>
+                <a href="students.html" class="text-blue-600">Học viên</a>
+                <a href="register.html">Đăng ký</a>
+                <a href="login.html" id="authBtnMobile" class="bg-blue-600 text-white px-5 py-2 rounded-lg text-center">Đăng nhập</a>
+            </div>
+        </div>
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30 md:hidden"></div>
     </nav>
 
     <!-- Nội dung Học viên -->
@@ -54,14 +72,51 @@
 
     <!-- Footer -->
     <footer class="py-10 text-center text-gray-500 border-t mt-20">
-        <p>&copy; 2019 Ms. Thuy English. Tất cả các quyền được bảo lưu.</p>
+        <p>&copy; 2026 Ms. Thuy English. Tất cả các quyền được bảo lưu.</p>
     </footer>
 
-    <!-- Script bảo mật -->
     <script>
-        if (!sessionStorage.getItem('daVaoTrangChu')) {
-            window.location.href = 'index.html';
+        // Xử lý menu trượt
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
+        const overlay = document.getElementById('overlay');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('left-0');
+            navMenu.classList.toggle('left-[-100%]');
+            overlay.classList.toggle('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            navMenu.classList.remove('left-0');
+            navMenu.classList.add('left-[-100%]');
+            overlay.classList.add('hidden');
+        });
+
+        // Xử lý trạng thái đăng nhập
+        const authBtnDesktop = document.getElementById('authBtnDesktop');
+        const authBtnMobile = document.getElementById('authBtnMobile');
+        
+        if (sessionStorage.getItem('isLoggedIn') === 'true') {
+            const btnText = "Trang cá nhân";
+            const btnLink = "profile.html";
+            const btnClass = "bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition";
+            
+            authBtnDesktop.innerHTML = btnText;
+            authBtnDesktop.href = btnLink;
+            authBtnDesktop.className = btnClass;
+            authBtnMobile.innerHTML = btnText;
+            authBtnMobile.href = btnLink;
+            authBtnMobile.className = btnClass + " text-center";
         }
+        window.onload = function() {
+        const authBtn = document.getElementById('authBtn'); // Đảm bảo nút đăng nhập có ID này
+        if (authBtn && sessionStorage.getItem('isLoggedIn') === 'true') {
+            authBtn.innerText = "Trang cá nhân";
+            authBtn.href = "profile.html";
+            authBtn.className = "bg-green-600 text-white px-5 py-2 rounded-lg";
+        }
+    };
     </script>
 </body>
 </html>

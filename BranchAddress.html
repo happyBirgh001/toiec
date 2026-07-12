@@ -4,45 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Branch Address - English Ms.Thuy</title>
+    <!-- Thêm Tailwind để quản lý menu -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { min-height: 100vh; display: flex; flex-direction: column; background: #f5f7fb; color: #333; }
 
-        header { background: #2563eb; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; color: #fff; }
-        header h1 { font-size: 24px; }
-        nav { display: flex; gap: 20px; }
-        nav a { color: #fff; text-decoration: none; font-weight: 500; font-size: 15px; padding-bottom: 4px; border-bottom: 2px solid transparent; transition: 0.3s; }
-        nav a:hover, nav a.active { border-bottom: 2px solid #fff; }
-
         .container { flex: 1; width: 90%; max-width: 900px; margin: 40px auto; }
-        
         .branch-card { background: #fff; padding: 25px; border-radius: 16px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid #2563eb; }
         .branch-card h2 { color: #2563eb; margin-bottom: 10px; }
         .branch-card p { margin-bottom: 5px; color: #555; }
-        
         .map-box { margin-bottom: 40px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         iframe { width: 100%; height: 350px; border: 0; display: block; }
-
-        .logout-btn { display: block; margin: 20px auto; padding: 10px 25px; background: #fff; color: #2563eb; border: 2px solid #2563eb; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s; }
-        .logout-btn:hover { background: #2563eb; color: #fff; }
-        footer { text-align: center; padding: 20px; background: #0f172a; color: #fff; font-size: 14px; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>English Ms.Thuy</h1>
-    <nav>
+<!-- Navbar chuẩn hóa -->
+<nav class="bg-blue-600 p-4 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="text-xl font-bold">Ms.Thuy English</div>
+        
+        <!-- Hamburger Menu -->
+        <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+
+        <!-- Menu Desktop -->
+        <div class="hidden md:flex space-x-6 font-medium">
+            <a href="profile.html">Profile</a>
+            <a href="Schedule.html">Schedule</a>
+            <a href="Teacher.html">Teachers</a>
+            <a href="BranchAddress.html" class="border-b-2 border-white">Address</a>
+        </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div id="navMenu" class="fixed top-0 left-[-100%] h-full w-[200px] bg-blue-700 p-8 transition-all duration-300 z-50 flex flex-col space-y-4">
+        <button id="closeBtn" class="text-left text-2xl mb-4">✕</button>
         <a href="profile.html">Student Profile</a>
         <a href="Schedule.html">Schedule</a>
         <a href="Teacher.html">Teachers</a>
-        <a href="BranchAddress.html" class="active">Branch Address</a>
-    </nav>
-</header>
+        <a href="BranchAddress.html">Address</a>
+    </div>
+</nav>
 
 <div class="container">
-    
     <!-- Cơ sở 1 -->
     <div class="branch-card">
         <h2>Cơ sở 1: Sơn Trà</h2>
@@ -61,13 +67,28 @@
     </div>
     <div class="map-box">
         <iframe src="https://www.google.com/maps?q=48+Hoa+Minh+1+Da+Nang&output=embed"></iframe>
-   
+    </div>
+</div>
 
-<footer>© 2019 English Ms.Thuy</footer>
+<footer class="text-center p-5 bg-slate-900 text-white text-sm">© 2019 English Ms.Thuy</footer>
 
 <script>
-    function logout(){
-        localStorage.removeItem("login");
+    // Logic Menu Mobile
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.replace('left-[-100%]', 'left-0');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        navMenu.classList.replace('left-0', 'left-[-100%]');
+    });
+
+    // Hàm logout thống nhất
+    function logout() {
+        sessionStorage.clear();
         window.location.href = "login.html";
     }
 </script>

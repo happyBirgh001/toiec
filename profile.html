@@ -4,45 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Profile - English Ms.Thuy</title>
-    <!-- Thư viện Font Awesome để hiển thị icon con mắt -->
+    <!-- Thư viện Tailwind và Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f4f7f6; min-height: 100vh; display: flex; flex-direction: column; }
-
-        header { background-color: #2563eb; color: white; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; }
-        header h1 { font-size: 24px; }
-        nav { display: flex; gap: 20px; }
-        nav a { color: white; text-decoration: none; font-weight: 500; padding-bottom: 4px; border-bottom: 2px solid transparent; transition: 0.3s; }
-        nav a.active { border-bottom: 2px solid white; }
-        nav a:hover { border-bottom: 2px solid white; }
-
+        body { background-color: #f4f7f6; font-family: 'Segoe UI', sans-serif; }
         .profile-container { width: 90%; max-width: 500px; margin: 40px auto; background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .avatar { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #2563eb; margin-bottom: 20px; object-fit: cover; }
+        .avatar { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #2563eb; margin: 0 auto 20px; object-fit: cover; }
         .info { margin-bottom: 20px; color: #555; line-height: 2; text-align: left; display: inline-block; }
-        
-        .logout-btn { padding: 10px 30px; background: #dc2626; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; margin-top: 10px; }
-        .logout-btn:hover { background: #b91c1c; }
-        
-        /* Chỉnh icon */
         .toggle-icon { cursor: pointer; color: #2563eb; margin-left: 10px; }
+        .logout-btn { padding: 10px 30px; background: #dc2626; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; display: inline-block; text-decoration: none; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>English Ms.Thuy</h1>
-    <nav>
-        <a href="profile.html" class="active">Student Profile</a>
-        <a href="Schedule.html">Schedule</a>
-        <a href="Teacher.html">Teachers</a>
-        <a href="BranchAddress.html">Branch Address</a>
-    </nav>
-</header>
+<!-- Header/Nav chung -->
+<nav class="bg-blue-600 p-4 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="text-xl font-bold">Ms.Thuy English</div>
+        
+        <!-- Nút Hamburger cho Mobile -->
+        <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+
+        <!-- Menu Desktop -->
+        <div class="hidden md:flex space-x-6 font-medium">
+            <a href="profile.html" class="border-b-2 border-white">Profile</a>
+            <a href="schedule.html" class="hover:text-blue-200">Schedule</a>
+            <a href="teachers.html" class="hover:text-blue-200">Teachers</a>
+            <a href="address.html" class="hover:text-blue-200">Address</a>
+        </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div id="navMenu" class="fixed top-0 left-[-100%] h-full w-[200px] bg-blue-700 p-8 transition-all duration-300 z-50 flex flex-col space-y-4">
+        <button id="closeBtn" class="text-left text-2xl mb-4">✕</button>
+        <a href="profile.html">Student Profile</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="teachers.html">Teachers</a>
+        <a href="address.html">Address</a>
+    </div>
+</nav>
 
 <div class="profile-container">
     <img src="Screenshot 2026-06-28 224453.png.jpg" alt="Avatar" class="avatar">
-    <h2>Nguyen Thi Nhu Y</h2>
+    <h2 class="text-2xl font-bold mb-4">Nguyen Thi Nhu Y</h2>
     <div class="info">
         <p><strong>Mã học viên:</strong> NTNY310</p>
         <p><strong>Email:</strong> N********10@gmail.com</p>
@@ -50,19 +55,19 @@
            <i class="fas fa-eye toggle-icon" id="toggle-icon" onclick="togglePhone()"></i>
         </p>
         <p><strong>Trình độ:</strong> Intermediate</p>
-    <!-- Nút Đăng xuất và Trang chủ -->
-<div>
+    </div>
     
-    <button onclick="logout()" class="logout-btn">Đăng xuất</button>
-    <button><a href="index.html" class="logout-btn">Trang Chủ</a></button>
+    <div class="flex justify-center gap-4">
+        <button onclick="logout()" class="logout-btn">Đăng xuất</button>
+        <a href="index.html" class="logout-btn bg-blue-600 hover:bg-blue-700">Trang Chủ</a>
+    </div>
 </div>
 
 <script>
+    // Xử lý ẩn/hiện SĐT
     function togglePhone() {
         const phoneText = document.getElementById("phone-text");
         const icon = document.getElementById("toggle-icon");
-        
-        // Số điện thoại thật của bạn
         const realPhone = "0708042310"; 
         const hiddenPhone = "07******10";
 
@@ -75,18 +80,25 @@
         }
     }
 
-    function logout(){
+    // Xử lý đăng xuất
+    function logout() {
+        sessionStorage.clear();
         localStorage.removeItem("login");
         window.location.href = "login.html";
     }
-    function logout(){
-    sessionStorage.clear(); // Xóa sạch dữ liệu phiên
-    window.location.href = "login.html";
-}
-function logout() {
-        sessionStorage.removeItem('isLoggedIn');
-        window.location.href = 'login.html';
-    }
+
+    // Xử lý Menu Mobile
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.replace('left-[-100%]', 'left-0');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        navMenu.classList.replace('left-0', 'left-[-100%]');
+    });
 </script>
 
 </body>
