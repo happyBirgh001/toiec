@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <title>Trang chủ | Ms. Thuy English</title>
+    <style>
+        .swiper { width: 100%; height: 350px; border-radius: 1rem; }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
@@ -12,13 +17,7 @@
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-600">Ms. Thuy English</div>
-            
-            <!-- Nút Hamburger (Chỉ hiện trên mobile) -->
-            <button id="menuBtn" class="md:hidden text-2xl z-50 relative p-2 focus:outline-none">
-                ☰
-            </button>
-
-            <!-- Menu trên Desktop -->
+            <button id="menuBtn" class="md:hidden text-2xl z-50 p-2 focus:outline-none">☰</button>
             <div class="hidden md:flex items-center space-x-6 font-medium">
                 <a href="index.html" class="text-blue-600 border-b-2 border-blue-600">Trang chủ</a>
                 <a href="courses.html" class="hover:text-blue-600">Khóa học</a>
@@ -27,19 +26,16 @@
                 <a href="login.html" id="authBtnDesktop" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Đăng nhập</a>
             </div>
         </div>
-
-        <!-- Menu Sidebar (Trượt từ trái qua cho Mobile) -->
-        <div id="navMenu" class="fixed top-0 left-[-100%] h-full w-[250px] bg-white shadow-2xl transition-all duration-500 ease-in-out z-40 p-10 flex flex-col space-y-6 md:hidden">
+        <!-- Sidebar Mobile -->
+        <div id="navMenu" class="fixed top-0 left-[-100%] h-full w-[250px] bg-white shadow-2xl transition-all duration-500 z-40 p-10 flex flex-col space-y-6 md:hidden">
             <div class="mt-10 font-medium flex flex-col space-y-6 text-lg">
                 <a href="index.html" class="text-blue-600">Trang chủ</a>
-                <a href="courses.html" class="hover:text-blue-600">Khóa học</a>
-                <a href="students.html" class="hover:text-blue-600">Học viên</a>
-                <a href="register.html" class="hover:text-blue-600">Đăng ký</a>
+                <a href="courses.html">Khóa học</a>
+                <a href="students.html">Học viên</a>
+                <a href="register.html">Đăng ký</a>
                 <a href="login.html" id="authBtnMobile" class="bg-blue-600 text-white px-5 py-2 rounded-lg text-center">Đăng nhập</a>
             </div>
         </div>
-        
-        <!-- Overlay làm mờ nền khi mở menu -->
         <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-30 md:hidden"></div>
     </nav>
 
@@ -48,11 +44,16 @@
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <h1 class="text-5xl font-extrabold mb-6">Chinh phục tiếng Anh đỉnh cao cùng Ms. Thuy</h1>
-                <p class="text-lg text-blue-100 mb-8">Hơn 5 năm kinh nghiệm đào tạo, giúp hàng nghìn học viên từ mất gốc thành thạo giao tiếp và chinh phục các kỳ thi quốc tế.</p>
+                <p class="text-lg text-blue-100 mb-8">Hơn 5 năm kinh nghiệm đào tạo, giúp hàng nghìn học viên từ mất gốc thành thạo giao tiếp.</p>
                 <a href="register.html" class="bg-white text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition">Đăng ký ngay</a>
             </div>
-            <div class="bg-blue-800 p-2 rounded-2xl shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600" alt="Ms. Thuy Teaching" class="rounded-xl w-full h-[350px] object-cover">
+            <!-- Slider -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600"></div>
+                    <div class="swiper-slide"><img src="https://ngoaingutomato.edu.vn/Data/images/hoc-tieng-anh-o-hai-phong-voi-tro-giang.jpg"></div>
+                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=600"></div>
+                </div>
             </div>
         </div>
     </header>
@@ -62,93 +63,44 @@
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-16">Khóa học nổi bật</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition">
-                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=400" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">TOEIC Cấp Tốc</h3>
-                        <p class="text-gray-600 mb-4">Lộ trình 3 tháng cam kết tăng điểm số ấn tượng.</p>
-                        <a href="register.html" class="text-blue-600 font-bold">Xem chi tiết →</a>
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOKYEfhJ11FD337TDHANj_M7c5DIX5p34iXPzNYrc_cLVwpTPhM8MfXHay&s=10" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Tiếng Anh Giao Tiếp</h3>
-                        <p class="text-gray-600 mb-4">Phản xạ tự nhiên, phát âm chuẩn người bản xứ.</p>
-                        <a href="register.html" class="text-blue-600 font-bold">Xem chi tiết →</a>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition">
-                    <img src="https://planguages.com/uploads/noidung/images/adobestock-121719342.jpeg" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Tiếng Anh Cho Người Mất Gốc</h3>
-                        <p class="text-gray-600 mb-4">Xây dựng nền tảng từ con số 0.</p>
-                        <a href="register.html" class="text-blue-600 font-bold">Xem chi tiết →</a>
-                    </div>
-                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover:scale-105 transition"><img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=400" class="w-full h-48 object-cover rounded-xl mb-4"><h3 class="text-xl font-bold mb-2">TOEIC Cấp Tốc</h3><p class="text-gray-600 mb-4">Lộ trình 3 tháng cam kết tăng điểm.</p><a href="register.html" class="text-blue-600 font-bold">Xem chi tiết →</a></div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover:scale-105 transition"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOKYEfhJ11FD337TDHANj_M7c5DIX5p34iXPzNYrc_cLVwpTPhM8MfXHay&s=10" class="w-full h-48 object-cover rounded-xl mb-4"><h3 class="text-xl font-bold mb-2">Giao Tiếp</h3><p class="text-gray-600 mb-4">Phản xạ tự nhiên, phát âm chuẩn.</p><a href="register.html" class="text-blue-600 font-bold">Xem chi tiết →</a></div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover:scale-105 transition"><img src="https://planguages.com/uploads/noidung/images/adobestock-121719342.jpeg" class="w-full h-48 object-cover rounded-xl mb-4"><h3 class="text-xl font-bold mb-2">Mất Gốc</h3><p class="text-gray-600 mb-4">Nền tảng từ con số 0.</p><a href="register.html" class="text-blue-600 font-bold">Xem chi tiết →</a></div>
             </div>
         </div>
     </section>
 
-    <!-- Cảm nhận học viên -->
-    <section class="py-20">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-12">Học viên nói gì về chúng tôi?</h2>
-            <div class="italic text-lg text-gray-700 bg-blue-50 p-8 rounded-2xl">
-                "Nhờ phương pháp cá nhân hóa của Ms. Thuy mà mình đã đạt TOEIC 720 chỉ sau 4 tháng, dù trước đó mình rất sợ tiếng Anh!"
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-blue-400">Liên hệ</h3>
+                <p>📍 Địa chỉ: Đà Nẵng</p>
+                <p>📞 SĐT: 0905.xxx.xxx</p>
             </div>
-            <p class="mt-4 font-bold text-blue-600">— Truong Cong Tai, Học viên TOEIC 720</p>
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-blue-400">Trang web</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="courses.html">Khóa học</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-blue-400">Kết nối</h3>
+                <div class="flex space-x-4"><a href="#" class="bg-blue-800 px-4 py-2 rounded-full">Facebook</a></div>
+            </div>
         </div>
-    </section>
+    </footer>
 
-    <!-- Kêu gọi hành động cuối trang -->
-    <section class="py-16 bg-blue-600 text-white text-center">
-        <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-6">Bạn đã sẵn sàng bứt phá tiếng Anh?</h2>
-            <p class="mb-8 text-blue-100">Đăng ký ngay hôm nay để nhận ưu đãi lộ trình học cá nhân hóa dành riêng cho bạn.</p>
-            <a href="register.html" class="bg-white text-blue-600 px-10 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">Đăng ký lộ trình miễn phí</a>
-        </div>
-    </section>
-
-    <!-- Script xử lý logic -->
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Xử lý menu trượt
+        new Swiper(".mySwiper", { autoplay: { delay: 2500, disableOnInteraction: false }, loop: true });
         const menuBtn = document.getElementById('menuBtn');
         const navMenu = document.getElementById('navMenu');
         const overlay = document.getElementById('overlay');
-
-        menuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('left-[-100%]');
-            navMenu.classList.toggle('left-0');
-            overlay.classList.toggle('hidden');
-        });
-
-        overlay.addEventListener('click', () => {
-            navMenu.classList.remove('left-0');
-            navMenu.classList.add('left-[-100%]');
-            overlay.classList.add('hidden');
-        });
-
-        // Xử lý nút Đăng nhập/Trang cá nhân
-        const authBtnDesktop = document.getElementById('authBtnDesktop');
-        const authBtnMobile = document.getElementById('authBtnMobile');
-        
-        if (sessionStorage.getItem('isLoggedIn') === 'true') {
-            const btnText = "Trang cá nhân";
-            const btnLink = "profile.html";
-            const btnClass = "bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition";
-            
-            authBtnDesktop.innerHTML = btnText;
-            authBtnDesktop.href = btnLink;
-            authBtnDesktop.className = btnClass;
-
-            authBtnMobile.innerHTML = btnText;
-            authBtnMobile.href = btnLink;
-            authBtnMobile.className = btnClass + " text-center";
-        }
+        menuBtn.onclick = () => { navMenu.classList.toggle('left-0'); navMenu.classList.toggle('left-[-100%]'); overlay.classList.toggle('hidden'); };
+        overlay.onclick = () => { navMenu.classList.remove('left-0'); navMenu.classList.add('left-[-100%]'); overlay.classList.add('hidden'); };
     </script>
 </body>
 </html>
