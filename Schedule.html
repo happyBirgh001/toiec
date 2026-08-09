@@ -24,69 +24,68 @@
 </head>
 <body>
 
-<!-- Navbar đã được chuẩn hóa giống trang Profile -->
+<!-- Navbar đã được đồng bộ đầy đủ các trang -->
 <nav class="bg-blue-600 p-4 text-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="text-xl font-bold">Ms.Thuy English</div>
         
         <!-- Hamburger Menu -->
-        <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+        <button id="menuBtn" class="md:hidden text-2xl focus:outline-none">☰</button>
 
         <!-- Menu Desktop -->
-        <div class="hidden md:flex space-x-6 font-medium">
-            <a href="profile.html">Profile</a>
+        <div class="hidden md:flex space-x-6 font-medium items-center">
+            <a href="profile.html" class="hover:text-blue-200">Profile</a>
             <a href="Schedule.html" class="border-b-2 border-white">Schedule</a>
-            <a href="Teacher.html">Teachers</a>
-            <a href="BranchAddress.html">Address</a>
+            <a href="Teacher.html" class="hover:text-blue-200">Teachers</a>
+            <a href="materials.html" class="hover:text-blue-200">materials</a>
+            
         </div>
     </div>
 
     <!-- Menu Mobile -->
-    <div id="navMenu" class="fixed top-0 left-[-100%] h-full w-[200px] bg-blue-700 p-8 transition-all duration-300 z-50 flex flex-col space-y-4">
-        <button id="closeBtn" class="text-left text-2xl mb-4">✕</button>
-        <a href="profile.html">Student Profile</a>
-        <a href="Schedule.html">Schedule</a>
-        <a href="Teacher.html">Teachers</a>
-        <a href="BranchAddress.html">Address</a>
+    <div id="navMenu" class="fixed top-0 left-[-100%] h-full w-[240px] bg-blue-700 p-8 transition-all duration-300 z-50 flex flex-col space-y-4">
+        <button id="closeBtn" class="text-left text-2xl mb-4 focus:outline-none">✕</button>
+        <a href="profile.html" class="hover:text-blue-200">Student Profile</a>
+        <a href="Schedule.html" class="font-bold">Schedule</a>
+        <a href="Teacher.html" class="hover:text-blue-200">Teachers</a>
+        <a href="materials.html" class="hover:text-blue-200">materials</a>
+        
     </div>
 </nav>
 
 <div class="container">
     <h2 class="text-2xl font-bold mb-6 text-blue-600">📚 Weekly Class Schedule</h2>
     <div class="schedule">
-        <!-- Thứ 3 -->
         <div class="lesson">
             <div class="lesson-header" onclick="toggleLesson(this)">
-                <span>Tuesday - Intermediate Listening & Speaking</span>
+                <span>Monday - TOEIC Listening Part 3</span>
                 <i class="fas fa-chevron-down arrow"></i>
             </div>
             <div class="lesson-content">
                 <p><strong>Time:</strong> 19:00 - 21:30 | <strong>Room:</strong> A101</p>
-                <p><strong>Content:</strong> Listening to natural conversations & Building speaking reflexes.</p>
+                <p><strong>Content:</strong> Strategy for long conversations.</p>
             </div>
         </div>
 
-        <!-- Thứ 5 -->
         <div class="lesson">
             <div class="lesson-header" onclick="toggleLesson(this)">
-                <span>Thursday - Discussion & Interaction</span>
+                <span>Wednesday - TOEIC Reading</span>
                 <i class="fas fa-chevron-down arrow"></i>
             </div>
             <div class="lesson-content">
                 <p><strong>Time:</strong> 19:00 - 21:30 | <strong>Room:</strong> A102</p>
-                <p><strong>Content:</strong> Advanced listening (accents/slangs) & Social debating strategies.</p>
+                <p><strong>Content:</strong> Grammar & Part 5 practice.</p>
             </div>
         </div>
 
-        <!-- Thứ 7 -->
         <div class="lesson">
             <div class="lesson-header" onclick="toggleLesson(this)">
-                <span>Saturday - Real-world Practice & Presentation</span>
+                <span>Friday - TOEIC Full Practice & Review</span>
                 <i class="fas fa-chevron-down arrow"></i>
             </div>
             <div class="lesson-content">
                 <p><strong>Time:</strong> 19:00 - 21:30 | <strong>Room:</strong> A103</p>
-                <p><strong>Content:</strong> Full Listening mock test & 1-on-1 presentation evaluation.</p>
+                <p><strong>Content:</strong> Mock Test & Review.</p>
             </div>
         </div>
     </div>
