@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="h-full"> <!-- Thêm class h-full cho html -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,36 +8,88 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
-        body { background-color: #f4f7f6; font-family: 'Segoe UI', sans-serif; }
-        .profile-container { width: 90%; max-width: 500px; margin: 40px auto; background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .avatar { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #2563eb; margin: 0 auto 20px; object-fit: cover; }
-        .info { margin-bottom: 20px; color: #555; line-height: 2; text-align: left; display: inline-block; }
+        /* Đặt chiều cao tối thiểu là 100% chiều cao khung nhìn (viewport) */
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Cập nhật .profile-container để căn giữa và hiển thị đẹp hơn */
+        .profile-container {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            /* Loại bỏ margin: 40px auto để dùng flexbox căn giữa */
+            margin: auto;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #2563eb;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            /* Đảm bảo kích thước không bị thay đổi */
+            min-width: 120px;
+            min-height: 120px;
+        }
+
+        .info {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 2;
+            text-align: left;
+            display: inline-block;
+            width: 100%; /* Để căn giữa nội dung bên trong */
+            max-width: 350px; /* Giới hạn độ rộng để dễ đọc */
+        }
+
         .toggle-icon { cursor: pointer; color: #2563eb; margin-left: 10px; }
-        .logout-btn { padding: 10px 30px; background: #dc2626; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; display: inline-block; text-decoration: none; }
+
+        .logout-btn {
+            padding: 10px 30px;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-block;
+            text-decoration: none;
+            transition: background-color 0.3s; /* Thêm hiệu ứng hover mượt mà */
+        }
+        .logout-btn:hover { opacity: 0.9; }
     </style>
 </head>
-<body>
+<body class="h-full flex flex-col"> <!-- Đảm bảo body chiếm hết chiều cao -->
 
 <!-- Header/Nav chung -->
-<nav class="bg-blue-600 p-4 text-white shadow-md sticky top-0 z-50">
+<nav class="bg-blue-600 p-4 text-white shadow-md sticky top-0 z-50 shrink-0">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="text-xl font-bold">Ms.Thuy English</div>
-        
+
         <!-- Nút Hamburger cho Mobile -->
-        <button id="menuBtn" class="md:hidden text-2xl">☰</button>
+        <button id="menuBtn" class="md:hidden text-2xl focus:outline-none">☰</button>
 
         <!-- Menu Desktop -->
         <div class="hidden md:flex space-x-6 font-medium">
-            <a href="profile.html" class="border-b-2 border-white">Profile</a>
+            <a href="profile.html" class="border-b-2 border-white pb-1">Profile</a>
             <a href="Schedule.html" class="hover:text-blue-200">Schedule</a>
             <a href="Teacher.html" class="hover:text-blue-200">Teachers</a>
-            <a href="BranchAddress" class="hover:text-blue-200">Address</a>
+            <a href="BranchAddress.html" class="hover:text-blue-200">Address</a>
         </div>
     </div>
 
-    <!-- Menu Mobile -->
-    <div id="navMenu" class="fixed top-0 left-[-100%] h-full w-[200px] bg-blue-700 p-8 transition-all duration-300 z-50 flex flex-col space-y-4">
-        <button id="closeBtn" class="text-left text-2xl mb-4">✕</button>
+    <!-- Menu Mobile (Giữ nguyên) -->
+    <div id="navMenu" class="fixed top-0 left-[-100%] h-full w-[200px] bg-blue-700 p-8 transition-all duration-300 z-50 flex flex-col space-y-4 md:hidden">
+        <button id="closeBtn" class="text-left text-2xl mb-4 focus:outline-none">✕</button>
         <a href="profile.html">Student Profile</a>
         <a href="Schedule.html">Schedule</a>
         <a href="Teacher.html">Teachers</a>
@@ -45,30 +97,34 @@
     </div>
 </nav>
 
-<div class="profile-container">
-    <img src="z8090667613662_a401774ea9298afbff79e84521a8da65.jpg" alt="Avatar" class="avatar">
-    <h2 class="text-2xl font-bold mb-4">Nguyen Thi Nhu Y</h2>
-    <div class="info">
-        <p><strong>Mã học viên:</strong> NTNY310</p>
-        <p><strong>Email:</strong> N********10@gmail.com</p>
-        <p><strong>SĐT:</strong> <span id="phone-text">07******10</span> 
-           <i class="fas fa-eye toggle-icon" id="toggle-icon" onclick="togglePhone()"></i>
-        </p>
-        <p><strong>Khoá 2026:</strong> Tiếng Anh Giao Tiếp </p>
+<!-- Thêm lớp flex-grow để đẩy footer hoặc nội dung xuống dưới nếu cần -->
+<!-- Sử dụng các lớp flexbox của Tailwind trên body để căn giữa .profile-container -->
+<main class="flex-grow flex items-center justify-center p-4">
+    <div class="profile-container">
+        <img src="z8090667613662_a401774ea9298afbff79e84521a8da65.jpg" alt="Avatar" class="avatar">
+        <h2 class="text-2xl font-bold mb-4">Nguyen Thi Nhu Y</h2>
+        <div class="info">
+            <p><strong>Mã học viên:</strong> NTNY310</p>
+            <p><strong>Email:</strong> N********10@gmail.com</p>
+            <p><strong>SĐT:</strong> <span id="phone-text">07******10</span>
+               <i class="fas fa-eye toggle-icon" id="toggle-icon" onclick="togglePhone()"></i>
+            </p>
+            <p><strong>Khoá 2026:</strong> Tiếng Anh Giao Tiếp </p>
+        </div>
+
+        <div class="flex justify-center gap-4 mt-4">
+            <button onclick="logout()" class="logout-btn bg-red-600">Đăng xuất</button>
+            <a href="index.html" class="logout-btn bg-blue-600">Trang Chủ</a>
+        </div>
     </div>
-    
-    <div class="flex justify-center gap-4">
-        <button onclick="logout()" class="logout-btn">Đăng xuất</button>
-        <a href="index.html" class="logout-btn bg-blue-600 hover:bg-blue-700">Trang Chủ</a>
-    </div>
-</div>
+</main>
 
 <script>
-    // Xử lý ẩn/hiện SĐT
+    // Xử lý ẩn/hiện SĐT (Giữ nguyên)
     function togglePhone() {
         const phoneText = document.getElementById("phone-text");
         const icon = document.getElementById("toggle-icon");
-        const realPhone = "0708042310"; 
+        const realPhone = "0708042310";
         const hiddenPhone = "07******10";
 
         if (phoneText.innerText === hiddenPhone) {
@@ -80,14 +136,14 @@
         }
     }
 
-    // Xử lý đăng xuất
+    // Xử lý đăng xuất (Giữ nguyên)
     function logout() {
         sessionStorage.clear();
         localStorage.removeItem("login");
         window.location.href = "login.html";
     }
 
-    // Xử lý Menu Mobile
+    // Xử lý Menu Mobile (Giữ nguyên)
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
     const navMenu = document.getElementById('navMenu');
